@@ -1,6 +1,5 @@
 package com.example.portay_m.monappliihm;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -30,9 +29,13 @@ public class FormActivity extends AppCompatActivity {
 
     private void save(){
         String name = editTextName.getText().toString();
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra(MainActivity.KEY_USERNAME, name);  //pas mettre username codé en dur
-        setResult(RESULT_OK, resultIntent);
+
+        if(!name.isEmpty()){
+            DataManager.getInstance().addName(name);
+        }
+
         finish();
     }
+
+
 }
